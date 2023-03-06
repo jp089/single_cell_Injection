@@ -29,12 +29,12 @@ transf_coord <- function(reference, dims, n_comps, integrated1, data_name) {
         if (n_comps == 2) {
             integrated2 <- Seurat::TransferData(anchorset = trf_anchors,
                            reference = reference, query = integrated1,
-                           refdata = list(comp1 = "comp_1", comp_2 = "comp_2"),
+                           refdata = list(comp_1 = "comp_1", comp_2 = "comp_2"),
                            store.weights = FALSE)
             } else if (n_comps == 3) {
                 integrated2 <- Seurat::TransferData(anchorset = trf_anchors,
                                reference = reference, query = integrated1,
-                               refdata = list(comp1 = "comp_1", comp_2 = "comp_2",
+                               refdata = list(comp_1 = "comp_1", comp_2 = "comp_2",
                                comp_3 = "comp_3"), store.weights = FALSE)
                        }
         query_data_name <- paste("q", data_name, sep = "_")
