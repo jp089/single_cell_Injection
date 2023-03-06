@@ -1,0 +1,73 @@
+---
+title: "Manuel Injector"
+output: html_document
+date: "2023-03-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data
+
+## Set working directory and load the library
+
+First, you need to set the filepath to your working directory.
+
+```{r }
+setwd("/path/to/working directory")
+library("Injector")
+```
+
+## Load references
+This function loads a reference Seurat object with trajectory inference coordinates as metadata. It assumes that the 'Seurat' object was previously generate by using CreateSeuratObject (Seurat package). Trajectory coordinates (comp_1 and comp_2) were obtained with one dynverse package methods and then added to the 'Seurat' object, by using AddMetaData (Seurat package). More details in ?load_ref.
+
+```{r }
+ref_path = "/path/to/gdT_reference.h5seurat"
+ref_test <- load_ref(ref = ref_path)
+```
+
+## Load query 
+
+This function loads gene expression data (query) by using Read10X (Seurat package), and prepeared to inject on the reference. A 'data name' is required. More details in ?load_query.
+
+```{r }
+query_path = "path/to/query/raw/data"
+cell_path = "/path/to/list_cells_of_interest.txt"
+query.test <- load_query(query = query_path,
+                           adt = "",
+                           list_of_interest = cell_path,
+                           data_name = "query")
+```
+
+## Integrate data
+
+A function that integrate both Seurat objects reference and query. This function includes preprocessing, normlization, search of variables features and anchors, for data integration of Seurat package workflow. More details in ?intg1.
+
+```{r }
+query <- query.test
+reference <- ref_test
+ref_query.integrated <- intg1(reference,query)
+```
+
+# Injector [changer le titre peut-être, il faut dire à quelles étapes correspondent ces fonctions]
+
+## Transfer of coordinates
+
+A function that transfer the Trajectory coordinates (comp_1, and comp_2, or and comp_3) within the metadata of 'reference' Seurat object. More details in ?transf_coord.
+
+```{r }
+ref_query.Tcoord <- transf_coord(reference = reference, dims = 12,
+                                 n_comps = 2, integrated1 = ref_query.integrated,
+                                 data_name = "query") 
+```
+
+## Trajectory injection
+
+Create a rooted trajectory object of your query by using the query transfered trajectory coordinates (using transf_coord function) and the trajectory rooted model of reference obtained from one of the wrapped methos in dynverse pipeline (dynwrap package). More details in ?trj_inf.
+
+```{r }
+query.Tinf <- trj_inf(integrated2 = ref_query.Tcoord, n_comps =2,
+                     model_rooted = "model_rooted.Robj",
+                     root="M1")
+```
