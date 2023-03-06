@@ -33,4 +33,4 @@ library(Injector)
 
 # How to use?
 
-A vignette ("Vignette.Rmd")is included within the GitHub repository to present how to use this library, as well as some neccessary files for this test. 
+A vignette ("single_cell_Injection/Vignette.Rmd") is included within the GitHub repository to present how to use this library, as well as some neccessary files for this test. 
