@@ -15,6 +15,11 @@ trj_inf(integrated2, n_comps, model_rooted, root)
 
 \item{root}{name of the milestone used for rooting the reference trajetory}
 }
+\value{
+A trajectory object (as detailed in ?infer_trajectory from dynwrap package)
+}
 \description{
-trajectory model obtain by infer_trajectory (dynwrap package)
+Create a rooted trajectory object of your query by using the query transfered trajectory
+coordinates (using transf_coord function) and the trajectory rooted model of reference
+obtained from one of the wrapped methos in dynverse pipeline (dynwrap package).
 }

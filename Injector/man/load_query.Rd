@@ -21,7 +21,7 @@ A Seurat object, with adt data as an 'assay'
 }
 \description{
 This function loads gene expression data (query) by
-using Read10X (Seurat package), and prepeared to injection
+using Read10X (Seurat package), and prepeared to inject
 on the reference. If ADT data is availible, it could be added.
 If it exists a list of interest, this could be also take
 into account to subset both gene expression and ADT data.

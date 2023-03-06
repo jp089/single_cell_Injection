@@ -1,12 +1,15 @@
 #' Trajectory injection
 #'
-#' trajectory model obtain by infer_trajectory (dynwrap package)
+#' Create a rooted trajectory object of your query by using the query transfered trajectory
+#' coordinates (using transf_coord function) and the trajectory rooted model of reference
+#' obtained from one of the wrapped methos in dynverse pipeline (dynwrap package).
 #'
 #' @param integrated2 A Seurat object obtained from transf_coord function
 #' @param n_comps number of components of your trajectory (2 or 3)
 #' @param model_rooted Path to the trajectory model (.Robj)
 #' @param root name of the milestone used for rooting the reference trajetory
-#'
+#' @return A trajectory object (as detailed in ?infer_trajectory from dynwrap package)
+#' 
 #' @export
 trj_inf <- function(integrated2, n_comps, model_rooted, root) {
     counts_q <- Matrix::t(integrated2@assays$integrated@data)

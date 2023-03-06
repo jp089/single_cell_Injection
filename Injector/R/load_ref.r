@@ -2,10 +2,10 @@
 #'
 #' This function loads a reference Seurat object with trajectory
 #' inference coordinates as metadata. It assumes that the 'Seurat'
-#' object was previously generate by using Createreferenceect (Seurat
+#' object was previously generate by using CreateSeuratObject (Seurat
 #' package). Trajectory coordinates (comp_1 and comp_2) were obtained
 #' with one dynverse package methods and then added to the 'Seurat' object,
-#' by using AddMetaData (referenceect package). If the reference
+#' by using AddMetaData (Seurat package). If the reference
 #' have < 20000 cells, it will use all of them. If it is between 20000
 #' and 25000, it will randomly select half of the data. And if it have > 25000
 #' cells, it will randomly select one third of the data.
