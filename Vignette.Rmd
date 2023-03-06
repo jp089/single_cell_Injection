@@ -50,7 +50,7 @@ reference <- ref_test
 ref_query.integrated <- intg1(reference,query)
 ```
 
-# Injector [changer le titre peut-être, il faut dire à quelles étapes correspondent ces fonctions]
+# Injection
 
 ## Transfer of coordinates
 
