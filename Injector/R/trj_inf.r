@@ -38,11 +38,11 @@ trj_inf <- function(integrated2, n_comps, model_rooted, root) {
         expression <- dataset_q$expression
         if (n_comps == 2) {
             space <- as.data.frame(mst_q)
-            space$predicted.comp1 <- as.numeric(space$predicted.comp1)
+            space$predicted.comp_1 <- as.numeric(space$predicted.comp_1)
             space$predicted.comp_2 <- as.numeric(space$predicted.comp_2)
             } else if (n_comps == 3) {
                 space <- as.data.frame(mst_q)
-            space$predicted.comp1 <- as.numeric(space$predicted.comp1)
+            space$predicted.comp_1 <- as.numeric(space$predicted.comp_1)
             space$predicted.comp_2 <- as.numeric(space$predicted.comp_2)
             space$predicted.comp_3 <- as.numeric(space$predicted.comp_3)
             }
