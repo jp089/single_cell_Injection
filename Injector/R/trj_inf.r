@@ -12,8 +12,20 @@
 #' 
 #' @export
 trj_inf <- function(integrated2, n_comps, model_rooted, root) {
+    library(dplyr)
     counts_q <- Matrix::t(integrated2@assays$integrated@data)
     gene_expression_q <- Matrix::t(integrated2@assays$integrated@scale.data)
+    loadRData <- function(fileName){load(fileName)
+    get(ls()[ls() != "fileName"])
+    }
+    dplyr_func <- function (lhs, rhs) { 
+      lhs <- substitute(lhs)
+      rhs <- substitute(rhs)
+      kind <- 1L
+      env <- parent.frame()
+      lazy <- TRUE
+      .External2(magrittr_pipe)
+      }
     if ((table(colnames(counts_q) %in% colnames(gene_expression_q)))[[1]] ==
        dim(counts_q)[2]) {
         print("Gene names ok")
@@ -34,7 +46,7 @@ trj_inf <- function(integrated2, n_comps, model_rooted, root) {
                 dataset_q <- dynwrap::wrap_expression(
                              expression = gene_expression_q, counts = counts_q)
             }
-        load(model_rooted)
+        model_rooted <- loadRData(model_rooted)
         expression <- dataset_q$expression
         if (n_comps == 2) {
             space <- as.data.frame(mst_q)
@@ -57,7 +69,7 @@ trj_inf <- function(integrated2, n_comps, model_rooted, root) {
                            dimred_milestones = centers)
             
         if (length(root) == 1) {
-            library(dplyr)
+            # library(dplyr)
             output_rooted1 <- output %>% dynwrap::add_root(root_milestone_id = root)
             } else {
                 output_rooted1 <- output
