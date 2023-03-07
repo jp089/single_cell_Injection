@@ -19,10 +19,10 @@ trj_inf <- function(integrated2, n_comps, model_rooted, root) {
         print("Gene names ok")
         # colnames(counts_q) <- gsub("\\-", "\\.", colnames(counts_q))
         if (n_comps == 2) {
-            mst_q <- as.matrix(integrated2@meta.data[, c("predicted.comp1",
+            mst_q <- as.matrix(integrated2@meta.data[, c("predicted.comp_1",
                                "predicted.comp_2")])
             } else if (n_comps == 3) {
-            mst_q <- as.matrix(integrated2@meta.data[, c("predicted.comp1",
+            mst_q <- as.matrix(integrated2@meta.data[, c("predicted.comp_1",
                                "predicted.comp_2", "predicted.comp_3")])
                    }   
         if (dim(counts_q)[2] == dim(gene_expression_q)[2]) {
